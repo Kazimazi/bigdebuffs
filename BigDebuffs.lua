@@ -1524,9 +1524,9 @@ else
         local showAllClassBuffs = BigDebuffs.db.profile.raidFrames.showAllClassBuffs and canApplyAura
 
         if ( hasCustom ) then
-            return showForMySpec or (alwaysShowMine and (showAllClassBuffs or unitCaster == "player" or unitCaster == "pet" or unitCaster == "vehicle"));
+            return showForMySpec or (alwaysShowMine and ((showAllClassBuffs and duration >= 300) or unitCaster == "player" or unitCaster == "pet" or unitCaster == "vehicle"));
         else
-            return (showAllClassBuffs or unitCaster == "player" or unitCaster == "pet" or unitCaster == "vehicle") and canApplyAura and not SpellIsSelfBuff(spellId);
+            return ((showAllClassBuffs and duration >= 300) or unitCaster == "player" or unitCaster == "pet" or unitCaster == "vehicle") and canApplyAura and not SpellIsSelfBuff(spellId);
         end
     end
 
